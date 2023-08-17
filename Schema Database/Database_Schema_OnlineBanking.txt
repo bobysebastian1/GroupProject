@@ -1,0 +1,123 @@
+mysql> use onlinebankingg;
+Database changed
+mysql> show full tables;
++--------------------------+------------+
+| Tables_in_onlinebankingg | Table_type |
++--------------------------+------------+
+| account                  | BASE TABLE |
+| chequebook_request       | BASE TABLE |
+| hibernate_sequence       | BASE TABLE |
+| loan                     | BASE TABLE |
+| saccount                 | BASE TABLE |
+| transfer                 | BASE TABLE |
+| transfer_imp             | BASE TABLE |
+| user                     | BASE TABLE |
+| user_history             | BASE TABLE |
++--------------------------+------------+
+9 rows in set (0.02 sec)
+
+mysql> desc account;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| id       | int          | NO   | PRI | NULL    |       |
+| accno    | bigint       | NO   |     | NULL    |       |
+| balance  | int          | NO   |     | NULL    |       |
+| username | varchar(255) | YES  |     | NULL    |       |
+| user_id  | int          | YES  | MUL | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+
+mysql> desc chequebook_request;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| id             | int          | NO   | PRI | NULL    |       |
+| acc_type       | varchar(255) | YES  |     | NULL    |       |
+| account        | bigint       | NO   |     | NULL    |       |
+| date           | date         | YES  |     | NULL    |       |
+| no_of_pages    | int          | NO   |     | NULL    |       |
+| request_status | bit(1)       | NO   |     | NULL    |       |
++----------------+--------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> desc loan;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| id            | int          | NO   | PRI | NULL    |       |
+| amount        | int          | NO   |     | NULL    |       |
+| annual_income | varchar(255) | YES  |     | NULL    |       |
+| loan_status   | varchar(10)  | YES  |     | Pending |       |
+| loan_used_for | varchar(255) | YES  |     | NULL    |       |
+| user_id       | int          | YES  | MUL | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> desc saccount;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| id       | int          | NO   | PRI | NULL    |       |
+| accno    | bigint       | NO   |     | NULL    |       |
+| balance  | int          | NO   |     | NULL    |       |
+| username | varchar(255) | YES  |     | NULL    |       |
+| user_id  | int          | YES  | MUL | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc transfer;
++----------+--------+------+-----+---------+-------+
+| Field    | Type   | Null | Key | Default | Extra |
++----------+--------+------+-----+---------+-------+
+| id       | int    | NO   | PRI | NULL    |       |
+| amount   | int    | NO   |     | NULL    |       |
+| date     | date   | YES  |     | NULL    |       |
+| raccount | bigint | NO   |     | NULL    |       |
+| saccount | bigint | NO   |     | NULL    |       |
++----------+--------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc user;
++----------------------+--------------+------+-----+---------+-------+
+| Field                | Type         | Null | Key | Default | Extra |
++----------------------+--------------+------+-----+---------+-------+
+| id                   | int          | NO   | PRI | NULL    |       |
+| address              | varchar(255) | YES  |     | NULL    |       |
+| authorization_status | tinyint(1)   | YES  |     | 0       |       |
+| dob                  | date         | YES  |     | NULL    |       |
+| email                | varchar(255) | YES  |     | NULL    |       |
+| feature_status       | int          | NO   |     | 3       |       |
+| fname                | varchar(255) | YES  |     | NULL    |       |
+| identity             | varchar(255) | YES  |     | NULL    |       |
+| identity_type        | varchar(255) | YES  |     | NULL    |       |
+| lname                | varchar(255) | YES  |     | NULL    |       |
+| password             | varchar(255) | YES  |     | NULL    |       |
+| phone                | bigint       | NO   |     | NULL    |       |
+| status               | tinyint(1)   | YES  |     | 0       |       |
+| username             | varchar(255) | YES  |     | NULL    |       |
++----------------------+--------------+------+-----+---------+-------+
+14 rows in set (0.01 sec)
+
+mysql> desc user_history;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| id      | int          | NO   | PRI | NULL    |       |
+| account | bigint       | NO   |     | NULL    |       |
+| action  | varchar(255) | YES  |     | NULL    |       |
+| amount  | int          | NO   |     | NULL    |       |
+| date    | date         | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc transfer_imp;
++----------+--------+------+-----+---------+-------+
+| Field    | Type   | Null | Key | Default | Extra |
++----------+--------+------+-----+---------+-------+
+| id       | int    | NO   | PRI | NULL    |       |
+| amount   | int    | NO   |     | NULL    |       |
+| date     | date   | YES  |     | NULL    |       |
+| raccount | bigint | NO   |     | NULL    |       |
+| saccount | bigint | NO   |     | NULL    |       |
++----------+--------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
